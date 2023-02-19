@@ -6,7 +6,7 @@
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/19 01:26:01 by blopez-f          #+#    #+#              #
-#    Updated: 2023/02/19 02:24:52 by blopez-f         ###   ########.fr        #
+#    Updated: 2023/02/19 02:27:25 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,4 +59,6 @@ fclean: clean
 
 re: fclean all
 
+
+NO ESTA BIEN
 
