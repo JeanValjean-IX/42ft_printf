@@ -6,59 +6,60 @@
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/19 01:26:01 by blopez-f          #+#    #+#              #
-#    Updated: 2023/02/19 02:27:25 by blopez-f         ###   ########.fr        #
+#    Updated: 2023/02/19 22:18:24 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME				= libftprintf.a
-INCLUDES			= includes
-SOURCES				= sources
-OBJECTS				= objects
-LIBRARIES			= libraries
-TEST				= test
+LIBS_PATH	= libraries
+SRCS_PATH	= sources
+LIBFT_PATH	= sources/libft
+INCS_PATH	= includes
+OBJS_PATH	= objects
+TEST_PATH	= test
 
-FTPRINTFT_SRC	= $(addprefix $(SOURCES)/,\
-	   				ft_printf.c)
-LIBFT_SRC		= $(addprefix $(SOURCES)/,\
-	   				ft_putchar.c)
+NAME	= $(LIBS_PATH)/libftprintf.a
+LIBFT	= $(LIBS_PATH)/libft.a
 
-CFLAGS			=	-Wall -Wextra -Werror
-IFLAGS			=	-Iincludes
-MK				=	@mkdir -p
-RM				=	@rm -rf
-FILE			=	$(shell ls -lR sources/ | grep -F .c | wc -l)
-CMP				=	1
-CLEAR			=	@clear
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+AR		= ar
+ARFLAGS	= rcs
+RM		= rm -rf
 
-ALL_SRCS	:=	ft_printf.c
-SRCS		:=	$(ALL_SRCS:%=$(SOURCES)/%)
-OBJS		:=	$(addprefix $(OBJECTS)/, $(SRCS:%.c=%.o))
+SRCS	= $(SRCS_PATH)/ft_printf.c
+OBJS	= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-all: $(LIBFT_NAME) $(NAME)
+$(OBJS_PATH)/%.o:	%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJS_DIR)/%.o: %.c
-	$(MK) $(@D)
-	@printf "\r$(LBLUE)[$(RESET)+$(LBLUE)] $(RESET)Adding $(GREEN)$<$(BLUE) [$(RESET)$(CMP)$(BLUE)/$(RESET)$(FILE)$(BLUE)]$(RESET)\n\r"
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
-	@$(eval CMP=$(shell echo $$(($(CMP)+1))))
-	
-$(LIBFT_NAME):
-	@make -C $(LIBFT_PATH)
+all:				
+	$(NAME)
 
-$(NAME): $(OBJS) 
-	@ar rcsT $(NAME) $(OBJS) $(LIBFT_NAME)
-	$(RNBW)
+bonus:
+	all
+
+$(NAME):
+	$(LIBFT) $(OBJS_PATH) $(OBJS)
+	cp $(LIBFT) $(NAME)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
+$(LIBFT):
+	make -C $(LIBFT_PATH) all
+
+$(OBJS_PATH):
+	mkdir -p $(OBJS_PATH)
 
 clean:
-	@make clean -C $(LIBRARIES)
-	$(RM) $(OBJECTS)
+	make -C $(LIBFT_PATH) clean
+	$(RM) $(OBJS_PATH)
 
-fclean: clean
-	@make fclean -C $(LIBRARIES)
+fclean:				
+	clean
+	make -C $(LIBFT_PATH) fclean
 	$(RM) $(NAME)
 
-re: fclean all
+re:
+	fclean all
 
-
-NO ESTA BIEN
-
+.PHONY:
+	all bonus clean fclean re libft
