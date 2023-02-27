@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/19 20:07:30 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/02/20 20:26:04 by blopez-f         ###   ########.fr       */
+/*   Created: 2023/02/27 20:46:45 by blopez-f          #+#    #+#             */
+/*   Updated: 2023/02/27 20:48:11 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../include/ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include "../sources/libft/libft.h"
-
-int	ft_printf(const char *format, ...);
-
-#endif
+void	ft_printf_str(char *str)
+{
+	ft_putstr_fd(str, 1);
+}
