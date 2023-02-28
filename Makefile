@@ -6,7 +6,7 @@
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/19 01:26:01 by blopez-f          #+#    #+#              #
-#    Updated: 2023/02/27 22:30:00 by blopez-f         ###   ########.fr        #
+#    Updated: 2023/02/28 21:14:48 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ RM			= rm -f
 AR			= ar rcs
 
 SRC_FILES	=	ft_printf \
-				ft_printf_parse \
 				ft_printf_char \
 				ft_printf_str \
 				ft_printf_nbr

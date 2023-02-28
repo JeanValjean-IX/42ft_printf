@@ -6,7 +6,7 @@
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 19:14:47 by blopez-f          #+#    #+#              #
-#    Updated: 2023/02/27 19:35:05 by blopez-f         ###   ########.fr        #
+#    Updated: 2023/02/28 21:04:52 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,12 +73,6 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
 
 $(OBJSF):
 			@mkdir -p $(OBJS_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTIS_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTMEM_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTPUT_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTTO_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTSTR_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTLST_DIR)
 
 clean:
 			@$(RM) -rf $(OBJS_DIR)
