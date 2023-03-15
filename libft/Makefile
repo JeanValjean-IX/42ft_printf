@@ -6,15 +6,14 @@
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/27 19:14:47 by blopez-f          #+#    #+#              #
-#    Updated: 2023/02/28 21:04:52 by blopez-f         ###   ########.fr        #
+#    Updated: 2023/03/05 13:58:42 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME		=	libft.a
-INCLUDES	=	../include
-SRCS_DIR 	=	source/
-OBJS_DIR	=	objects/
+INCLUDE_DIR	=	./
+SOURCES_DIR	=	./
+BUILD_DIR	=	build/
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -I
 RM			=	rm -f
@@ -55,8 +54,8 @@ SRC_FILES  = ft_memset \
 			ft_putendl_fd \
 			ft_putnbr_fd
 
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRCS = $(addprefix $(SOURCES_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJS = $(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 OBJSF =	.cache_exists
 
@@ -65,28 +64,28 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@$(AR) $(NAME) $(OBJS)
 			@ranlib $(NAME)
-			@echo "Libft compiled!"
+			@echo "\n[INFO] libft.a library done!\n"
 
-$(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
-			@echo "Compiling: $<"
-			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(BUILD_DIR)%.o : $(SOURCES_DIR)%.c | $(OBJSF)
+			@echo "Compiling (libft.a) ..... $<"
+			@$(CC) $(CFLAGS) $(INCLUDE_DIR) -c $< -o $@
 
 $(OBJSF):
-			@mkdir -p $(OBJS_DIR)
+			@mkdir -p $(BUILD_DIR)
 
 clean:
-			@$(RM) -rf $(OBJS_DIR)
+			@$(RM) -rf $(BUILD_DIR)
 			@$(RM) -f $(OBJSF)
-			@echo "libft objects files cleaned!"
+			@echo "\n[INFO] libft objects files cleaned!\n"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@echo "libft executable files cleaned!"
+			@echo "[INFO] libft executable files cleaned!\n"
 
 re:			fclean all
-			@echo "Cleaned and rebuilt everything for libft!"
+			@echo "[INFO] Cleaned and rebuilt everything for libft library!\n"
 
 norm:
-	@norminette $(SRCS) $(INCLUDES) | grep -v Norme -B1 || true
-
+	@norminette $(SOURCES_DIR) $(INCLUDE_DIR) | grep -v Norme -B1 || true
+ 
 .PHONY:		all clean fclean re norm

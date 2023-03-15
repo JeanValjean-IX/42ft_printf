@@ -5,63 +5,77 @@
 #                                                     +:+ +:+         +:+      #
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/19 01:26:01 by blopez-f          #+#    #+#              #
-#    Updated: 2023/02/28 21:14:48 by blopez-f         ###   ########.fr        #
+#    Created: 2023/03/04 11:27:45 by blopez-f          #+#    #+#              #
+#    Updated: 2023/03/16 00:09:30 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.a
-INCLUDE		= include
-LIBFT		= libft
-SRC_DIR		= source/
-OBJ_DIR		= objects/
+NAME 		= libftprintf.a
+SOURCES_DIR	= ./sources/
+BUILD_DIR	= ./build/
+INCLUDE_DIR = ./includes
+TEST_DIR	= ./test
+LIBFT_DIR	= ./libft/
+LIBFT 		= $(LIBFT_DIR)/libft.a
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -I
+CFLAGS 		= -Wall -Werror -Wextra
 RM			= rm -f
 AR			= ar rcs
 
-SRC_FILES	=	ft_printf \
-				ft_printf_char \
-				ft_printf_str \
-				ft_printf_nbr
-				
-SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRC_FILES	= ft_printf \
+			ft_printf_arguments \
+			ft_printf_printer \
+			ft_printf_printer_c \
+			ft_printf_printer_s \
+			ft_printf_printer_i \
+			ft_printf_printer_x \
+			ft_printf_number
 
-OBJF		=	.cache_exists
+SRCS = $(addprefix $(SOURCES_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJS = $(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-all = $(NAME)
+all: $(NAME)
 
-$(NAME):	$(OBJ)
-			@make -C $(LIBFT)
-			@cp libft/libft.a .
-			@mv libft.a $(NAME)
-			@$(AR) $(NAME) $(OBJ)
-			@echo "ft_printf library compiled!"
+$(NAME):  $(LIBFT) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+	@echo "\n[INFO] libftprintf.a library done!"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "Compiling: $< "
-			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(BUILD_DIR)%.o : $(SOURCES_DIR)%.c | $(OBJSF)
+	@mkdir -p $(@D)
+	@echo "Compiling (libftprintf.a) ..... $<"
+	@$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -I $(LIBFT_DIR) -c $< -o $@
 
-$(OBJF):
-			@mkdir -p $(OBJ_DIR)
+$(OBJSF):
+			@mkdir -p $(BUILD_DIR)
 
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
+	@cp $(LIBFT_DIR)/libft.h $(INCLUDE_DIR)
+	@cp $(LIBFT) $(NAME)
 
 clean:
-			@$(RM) -rf $(OBJ_DIR)
-			@make clean -C $(LIBFT)
-			@echo "ft_printf objects files cleaned!"
+	@make clean -C $(LIBFT_DIR)
+	@$(RM) $(INCLUDE_DIR)/libft.h
+	@$(RM) -r $(BUILD_DIR)
+	@echo "\n[INFO] libftprintf objects files cleaned!\n"
 
-fclean:		clean
-			@$(RM) -f $(NAME)
-			@$(RM) -f $(LIBFT)/libft.a
-			@echo "ft_printf executable files cleaned!"
-			@echo "libft executable files cleaned!"
+fclean: clean
+	@make fclean -C $(LIBFT_DIR)
+	@$(RM) $(NAME)
+	@echo "[INFO] libftprintf executable files cleaned!\n"
 
-re:			fclean all
-			@echo "Cleaned and rebuilt everything for ft_printf!"
+re: fclean all
+	@echo "[INFO] Cleaned and rebuilt everything for libftprintf library!\n"
 
-norm:
-			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
+test: re
+	@$(CC) $(TEST_DIR)/test.c -lftprintf -L . -I $(INCLUDE_DIR) -o test.out
+	@echo "\033[0;32m=== RUNNER ===\033[0m"
+	@./test.out
 
-.PHONY:		all clean fclean re norm
+testmem: re
+		@$(CC) $(TEST_DIR)/test.c -lftprintf -L . -I $(INCLUDE_DIR) -o test.out
+	@echo "\033[0;32m=== RUNNER ===\033[0m"
+	@valgrind -q --leak-check=full --track-origins=yes ./test.out
+	
+.PHONY: all clean fclean re
+
