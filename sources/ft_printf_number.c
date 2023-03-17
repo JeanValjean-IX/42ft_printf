@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 22:24:41 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/15 23:33:41 by blopez-f         ###   ########.fr       */
+/*   Created: 2023/03/16 17:09:00 by blopez-f          #+#    #+#             */
+/*   Updated: 2023/03/16 18:35:34 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_printf_number(int num, char *digits, int len)
 {
 	int	aux1;
 	int	aux2;
-	int base;
+	int	base;
 
 	len++;
 	aux2 = 0;
@@ -31,7 +31,7 @@ int	ft_printf_number(int num, char *digits, int len)
 		num = -num;
 		len = ft_printf_number(num, digits, len);
 	}
-	else if (num > base-1)
+	else if (num > base - 1)
 	{
 		aux1 = num / base;
 		aux2 = digits[(num % base)];

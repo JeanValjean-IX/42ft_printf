@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 23:11:05 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/15 23:18:49 by blopez-f         ###   ########.fr       */
+/*   Created: 2023/03/16 17:21:36 by blopez-f          #+#    #+#             */
+/*   Updated: 2023/03/16 17:21:57 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_printf_printer_x(int num, char c)
 {
-	int	len;
-	char *str;
+	int		len;
+	char	*str;
 
 	if (c == 'x')
 		str = "0123456789abcdef";

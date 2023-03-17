@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/04 11:27:45 by blopez-f          #+#    #+#              #
-#    Updated: 2023/03/16 00:09:30 by blopez-f         ###   ########.fr        #
+#    Created: 2023/03/16 16:52:28 by blopez-f          #+#    #+#              #
+#    Updated: 2023/03/16 17:59:06 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_FILES	= ft_printf \
 			ft_printf_printer_s \
 			ft_printf_printer_i \
 			ft_printf_printer_x \
+			ft_printf_printer_d \
 			ft_printf_number
 
 SRCS = $(addprefix $(SOURCES_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -78,4 +79,3 @@ testmem: re
 	@valgrind -q --leak-check=full --track-origins=yes ./test.out
 	
 .PHONY: all clean fclean re
-

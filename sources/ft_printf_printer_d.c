@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_printer_c.c                              :+:      :+:    :+:   */
+/*   ft_printf_printer_d.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 17:15:59 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/16 17:17:22 by blopez-f         ###   ########.fr       */
+/*   Created: 2023/03/16 17:54:43 by blopez-f          #+#    #+#             */
+/*   Updated: 2023/03/16 20:43:48 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf_printer_c(char c)
+int	ft_printf_printer_d(int num)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	int	len;
+	
+	len = ft_printf_number(num, "0123456789", 0);
+	return (len);
 }
+
