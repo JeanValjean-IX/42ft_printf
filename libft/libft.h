@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:44:45 by blopez-f          #+#    #+#             */
-/*   Updated: 2022/11/23 21:54:18 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/18 22:27:38 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
+char	*ft_uitoa(unsigned int n);
+char	*ft_htola(unsigned int num);
+char	*ft_htoua(unsigned int num);
+char	*ft_ptoua(unsigned long num);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	**ft_split(char const *s, char c);
 void	ft_putchar_fd(char c, int fd);

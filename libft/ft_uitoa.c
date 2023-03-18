@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 19:38:31 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/18 19:44:09 by blopez-f         ###   ########.fr       */
+/*   Created: 2023/03/18 16:13:25 by blopez-f          #+#    #+#             */
+/*   Updated: 2023/03/18 19:02:27 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_istrlen(int num)
+size_t	ft_uistrlen(unsigned int num)
 {
 	size_t	numlen;
 
 	numlen = 0;
-	if (num < 0)
-	{
-		num = -num;
-		numlen++;
-	}	
-	if (num >= 0 && num <= 9)
+	if (num <= 9)
 		numlen++;
 	else
 	{
@@ -35,22 +30,17 @@ size_t	ft_istrlen(int num)
 	return (numlen);
 }
 
-char	*ft_itoa(int num)
+char	*ft_uitoa(unsigned int num)
 {
 	char	*numstr;
 	size_t	numlen;
-	
-	numlen = ft_istrlen(num);
-	if (num  == -2147483648)
-		return(ft_strdup("-2147483648"));
-	if (num < 0)
-		num = -num;
+
+	numlen = ft_uistrlen(num);
 	numstr = ft_calloc(sizeof(char), numlen + 1);
 	if (!numstr)
 		return (0);
-	numstr[0] = '-';
-	if (num>= 0 && num <= 9)
-		numstr[numlen - 1] = '0' + num;
+	if (num <= 9)
+		numstr[0] = '0' + num;
 	else
 	{
 		while (num != 0)

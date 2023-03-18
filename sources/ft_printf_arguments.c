@@ -6,13 +6,13 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:01:21 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/16 18:00:42 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/18 22:31:37 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_properties	ft_printf_init_properties()
+t_properties	ft_printf_init_properties(void)
 {
 	t_properties	properties;
 
@@ -26,7 +26,7 @@ int	ft_printf_parser_arguments_istype(char c)
 	char	*aux;
 	int		pos_arg;
 
-	aux = "%csdixX";
+	aux = "%csuidxXp";
 	pos_arg = 0;
 	while (aux[pos_arg] != '\0' && aux[pos_arg] != c)
 		pos_arg++;

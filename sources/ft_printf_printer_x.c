@@ -6,21 +6,25 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:21:36 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/16 17:21:57 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/18 22:11:19 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_printf_printer_x(int num, char c)
+int	ft_printf_printer_x(unsigned int num, t_properties *properties)
 {
-	int		len;
-	char	*str;
+	char	*numstr;
+	int		numlen;
 
-	if (c == 'x')
-		str = "0123456789abcdef";
+	if (properties->type == 'x')
+		numstr = ft_htola(num);
 	else
-		str = "0123456789ABCDEF";
-	len = ft_printf_number(num, str, 0);
-	return (len);
+		numstr = ft_htoua(num);
+	if (!numstr)
+		return (0);
+	numlen = ft_strlen(numstr);
+	ft_putstr_fd(numstr, 1);
+	free(numstr);
+	return (numlen);
 }

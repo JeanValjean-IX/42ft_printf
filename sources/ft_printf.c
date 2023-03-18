@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:54:08 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/16 17:04:15 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/18 20:01:39 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_print_istype(char c)
 	char	*aux;
 	int		pos;
 
-	aux = "%csidxX";
+	aux = "%csui";
 	pos = 0;
 	while (aux[pos] != '\0' && aux[pos] != c)
 		pos++;
@@ -30,7 +30,7 @@ int	ft_printf_parser(const char *str, va_list arg)
 {
 	int				len;
 	int				pos;
-	t_properties		properties;
+	t_properties	properties;
 
 	pos = 0;
 	len = 0;

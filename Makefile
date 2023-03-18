@@ -6,7 +6,7 @@
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 16:52:28 by blopez-f          #+#    #+#              #
-#    Updated: 2023/03/16 17:59:06 by blopez-f         ###   ########.fr        #
+#    Updated: 2023/03/18 22:25:00 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,11 @@ SRC_FILES	= ft_printf \
 			ft_printf_printer \
 			ft_printf_printer_c \
 			ft_printf_printer_s \
+			ft_printf_printer_u \
 			ft_printf_printer_i \
-			ft_printf_printer_x \
 			ft_printf_printer_d \
-			ft_printf_number
+			ft_printf_printer_x \
+			ft_printf_printer_p
 
 SRCS = $(addprefix $(SOURCES_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS = $(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILES)))
