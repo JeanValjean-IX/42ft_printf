@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_htoa.c                                          :+:      :+:    :+:   */
+/*   ft_xtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 20:06:11 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/18 21:36:14 by blopez-f         ###   ########.fr       */
+/*   Created: 2023/03/19 08:53:15 by blopez-f          #+#    #+#             */
+/*   Updated: 2023/03/19 09:02:46 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_hstrlen(unsigned int num)
+size_t	ft_xstrlen(unsigned int num)
 {
 	size_t	numlen;
 
@@ -30,7 +30,7 @@ size_t	ft_hstrlen(unsigned int num)
 	return (numlen);
 }
 
-char	*ft_htola(unsigned int num)
+char	*ft_xtoa_lower(unsigned int num)
 {
 	char	*numstr;
 	char	*template;
@@ -39,7 +39,7 @@ char	*ft_htola(unsigned int num)
 	template = ft_strdup("0123456789abcdef");
 	if (!template)
 		return (0);
-	numlen = ft_hstrlen(num);
+	numlen = ft_xstrlen(num);
 	numstr = ft_calloc(sizeof(char), numlen + 1);
 	if (!numstr)
 		return (0);
@@ -58,7 +58,7 @@ char	*ft_htola(unsigned int num)
 	return (numstr);
 }
 
-char	*ft_htoua(unsigned int num)
+char	*ft_xtoa_upper(unsigned int num)
 {
 	char	*numstr;
 	char	*template;
@@ -67,7 +67,7 @@ char	*ft_htoua(unsigned int num)
 	template = ft_strdup("0123456789ABCDEF");
 	if (!template)
 		return (0);
-	numlen = ft_hstrlen(num);
+	numlen = ft_xstrlen(num);
 	numstr = ft_calloc(sizeof(char), numlen + 1);
 	if (!numstr)
 		return (0);

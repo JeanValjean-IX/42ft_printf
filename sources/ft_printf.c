@@ -6,25 +6,11 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:54:08 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/18 20:01:39 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:08:27 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-int	ft_print_istype(char c)
-{
-	char	*aux;
-	int		pos;
-
-	aux = "%csui";
-	pos = 0;
-	while (aux[pos] != '\0' && aux[pos] != c)
-		pos++;
-	if (aux[pos] != '\0')
-		return (1);
-	return (0);
-}
 
 int	ft_printf_parser(const char *str, va_list arg)
 {
@@ -40,10 +26,13 @@ int	ft_printf_parser(const char *str, va_list arg)
 		if (str[pos] == '%' && str[pos + 1] != '\0')
 		{
 			pos = ft_printf_parser_arguments(str, pos + 1, arg, &properties);
-			len += properties.len;
+			if (properties.len == -1)
+				return (-1);
 		}
 		else
-			len += ft_printf_printer_c(str[pos]);
+			if (ft_printf_printer_c(str[pos]) == -1)
+				return (-1);
+		len += properties.len;
 		pos++;
 	}
 	return (len);

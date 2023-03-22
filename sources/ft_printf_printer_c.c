@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:15:59 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/16 17:17:22 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:02:57 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	ft_printf_printer_c(char c)
 {
-	ft_putchar_fd(c, 1);
+	int flag_result;
+
+	flag_result = write(1, &c, 1);
+	if (flag_result == -1)
+		return (-1);
 	return (1);
 }

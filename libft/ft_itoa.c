@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 19:38:31 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/18 19:44:09 by blopez-f         ###   ########.fr       */
+/*   Created: 2023/03/19 08:51:27 by blopez-f          #+#    #+#             */
+/*   Updated: 2023/03/19 09:08:38 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ char	*ft_itoa(int num)
 {
 	char	*numstr;
 	size_t	numlen;
-	
+
 	numlen = ft_istrlen(num);
-	if (num  == -2147483648)
-		return(ft_strdup("-2147483648"));
+	if (num == -2147483648)
+		return (ft_strdup("-2147483648"));
 	if (num < 0)
 		num = -num;
 	numstr = ft_calloc(sizeof(char), numlen + 1);
 	if (!numstr)
 		return (0);
 	numstr[0] = '-';
-	if (num>= 0 && num <= 9)
+	if (num >= 0 && num <= 9)
 		numstr[numlen - 1] = '0' + num;
 	else
 	{

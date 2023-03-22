@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/27 19:14:47 by blopez-f          #+#    #+#              #
-#    Updated: 2023/03/18 22:26:19 by blopez-f         ###   ########.fr        #
+#    Created: 2023/03/16 17:32:35 by blopez-f          #+#    #+#              #
+#    Updated: 2023/03/19 09:28:59 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,8 @@ SRC_FILES  = ft_memset \
 			ft_strtrim \
 			ft_split \
 			ft_itoa \
+			ft_xtoa \
 			ft_uitoa \
-			ft_htoa \
 			ft_ptoa \
 			ft_strmapi \
 			ft_striteri \

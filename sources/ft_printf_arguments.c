@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:01:21 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/18 22:31:37 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:45:03 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_properties	ft_printf_init_properties(void)
 	t_properties	properties;
 
 	properties.type = '\0';
-	properties.len = 0;
+	properties.len = 1;
 	return (properties);
 }
 

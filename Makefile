@@ -6,7 +6,7 @@
 #    By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 16:52:28 by blopez-f          #+#    #+#              #
-#    Updated: 2023/03/18 22:25:00 by blopez-f         ###   ########.fr        #
+#    Updated: 2023/03/22 21:29:45 by blopez-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,12 +71,12 @@ re: fclean all
 
 test: re
 	@$(CC) $(TEST_DIR)/test.c -lftprintf -L . -I $(INCLUDE_DIR) -o test.out
-	@echo "\033[0;32m=== RUNNER ===\033[0m"
+	@echo "\033[0;32m=== TEST ===\033[0m"
 	@./test.out
 
 testmem: re
-		@$(CC) $(TEST_DIR)/test.c -lftprintf -L . -I $(INCLUDE_DIR) -o test.out
-	@echo "\033[0;32m=== RUNNER ===\033[0m"
+	@$(CC) $(TEST_DIR)/test.c -lftprintf -L . -I $(INCLUDE_DIR) -o test.out
+	@echo "\033[0;32m=== TEST ===\033[0m"
 	@valgrind -q --leak-check=full --track-origins=yes ./test.out
 	
 .PHONY: all clean fclean re
