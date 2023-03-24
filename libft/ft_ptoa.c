@@ -6,20 +6,26 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:57:23 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/19 09:30:06 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/24 22:05:31 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#ifdef __linux__
+#define STR_NULL "(nil)"
+#endif
+
+#ifdef __apple__
+#define STR_NULL "0x0"
+#endif
 
 size_t	ft_pstrlen(unsigned long num)
 {
 	size_t	numlen;
 
 	numlen = 2;
-	if (num == 0)
-		numlen = 5;
-	else if (num >= 1 && num <= 15)
+	if (num >= 1 && num <= 15)
 		numlen++;
 	else
 	{
@@ -41,7 +47,9 @@ char	*ft_ptoa(unsigned long num, char *template)
 	numstr = ft_calloc(sizeof(char), numlen + 1);
 	if (!numstr)
 		return (0);
-	ft_strlcpy(numstr, "0x", 3);
+	numstr[0] = '0';
+	numstr[1] = 'x';
+	//ft_strlcpy(numstr, "0x", 3);
 	if (num <= 15)
 		numstr[2] = template[num];
 	else
@@ -62,7 +70,12 @@ char	*ft_ptoa_lower(unsigned long num)
 	char	*template;
 
 	if (num == 0)
+	{
+		numstr = ft_strdup(STR_NULL);
+		if (numstr != 0)
+			return (numstr);
 		return (0);
+	}
 	template = ft_strdup("0123456789abcdef");
 	if (!template)
 		return (0);
@@ -77,7 +90,12 @@ char	*ft_ptoa_upper(unsigned long num)
 	char	*template;
 
 	if (num == 0)
+	{
+		numstr = ft_strdup(STR_NULL);
+		if (numstr != 0)
+			return (numstr);
 		return (0);
+	}
 	template = ft_strdup("0123456789ABCDEF");
 	if (!template)
 		return (0);
