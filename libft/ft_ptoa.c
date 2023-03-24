@@ -6,18 +6,18 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:57:23 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/24 22:05:31 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/24 22:57:16 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #ifdef __linux__
-#define STR_NULL "(nil)"
+# define STR_NULL "(nil)"
 #endif
 
 #ifdef __apple__
-#define STR_NULL "0x0"
+# define STR_NULL "0x0"
 #endif
 
 size_t	ft_pstrlen(unsigned long num)
@@ -49,7 +49,6 @@ char	*ft_ptoa(unsigned long num, char *template)
 		return (0);
 	numstr[0] = '0';
 	numstr[1] = 'x';
-	//ft_strlcpy(numstr, "0x", 3);
 	if (num <= 15)
 		numstr[2] = template[num];
 	else
