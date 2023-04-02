@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:22:24 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/19 15:02:45 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:16:12 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				ft_printf_parser_arguments(const char *str, int pos,
 					va_list arg, t_properties *properties);
 int				ft_printf_parser_arguments_istype(char c);
 int				ft_printf_parser(const char *str, va_list arg);
-int				ft_printf_printer_c(char c);
+int				ft_printf_printer_c(int c);
 int				ft_printf_printer_s(char *str);
 int				ft_printf_printer_u(unsigned int num);
 int				ft_printf_printer_i(int num);

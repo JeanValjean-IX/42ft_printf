@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:54:08 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/22 21:08:27 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/04/02 20:12:33 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ int	ft_printf_parser(const char *str, va_list arg)
 			pos = ft_printf_parser_arguments(str, pos + 1, arg, &properties);
 			if (properties.len == -1)
 				return (-1);
+			len += properties.len;
 		}
 		else
+		{
 			if (ft_printf_printer_c(str[pos]) == -1)
 				return (-1);
-		len += properties.len;
+			len++;
+		}
 		pos++;
 	}
 	return (len);

@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:57:23 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/24 22:57:16 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:42:28 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define STR_NULL "(nil)"
 #endif
 
-#ifdef __apple__
+#ifdef __APPLE__
 # define STR_NULL "0x0"
 #endif
 
@@ -91,7 +91,7 @@ char	*ft_ptoa_upper(unsigned long num)
 	if (num == 0)
 	{
 		numstr = ft_strdup(STR_NULL);
-		if (numstr != 0)
+		if (numstr)
 			return (numstr);
 		return (0);
 	}
