@@ -6,7 +6,7 @@
 /*   By: blopez-f <blopez-f@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:13:47 by blopez-f          #+#    #+#             */
-/*   Updated: 2023/03/24 22:44:33 by blopez-f         ###   ########.fr       */
+/*   Updated: 2023/04/22 21:10:21 by blopez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_printf_printer(va_list arg, t_properties *properties)
 	else if (properties->type == 'x' || properties->type == 'X')
 		properties->len = ft_printf_printer_x(va_arg(arg, unsigned int),
 				properties);
-	else if (properties->type == 'p' || properties->type == 'X')
+	else if (properties->type == 'p')
 		properties->len += ft_printf_printer_p(va_arg(arg, unsigned long));
 	if (properties->len == -1)
 		return (-1);
